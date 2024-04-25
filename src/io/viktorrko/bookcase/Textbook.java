@@ -14,6 +14,10 @@ class Textbook extends Book {
 		this.targetGrade = TargetGrade.valueOf(targetGrade.toUpperCase());
 	}
 
+	public Enum<?> getParameter() {
+		return targetGrade;
+	}
+	
 	public TargetGrade getTargetGrade() {
 		return targetGrade;
 	}

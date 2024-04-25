@@ -1,5 +1,8 @@
 package io.viktorrko.bookcase;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -211,18 +214,35 @@ class BookList {
 	}
 	
 	public void exportBookInfo() {
-		//TODO implement file operation
 		String title = KeyboardInput.scanString("Title");
 		String data = "";
 		int i = bookExists(title);
 		
 		if (i != -1) {
-			data = books.get(i).getDataCSV();
+			// FileHandler.writeToFile(, books.get(i).getTitle()+".txt");
+			File file = FileHandler.createFile(books.get(i).getTitle()+".txt");
+			if(FileHandler.writeToFile(books.get(i).getDataCSV(), file))
+				System.out.println("Book exported to:\n" + file);
+			else
+				System.out.println("Book failed to export.");
 		}
 		else
 			messageBookNotFound(title);
 		
-		System.out.println(data);
+		// System.out.println(data);
+	}
+	
+	public void importBookInfo() {
+		// TODO check if this works
+		String fileName = KeyboardInput.scanString("File");
+		
+		if (Paths.get(fileName).toFile().exists()) {
+			String data = FileHandler.readFromFile(Paths.get(fileName));
+			
+			if (Book.isValidCSV(data)) {
+				addBook(data.split(";")[0], data.split(";")[1], data.split(";")[2].split(","), Short.parseShort(data.split(";")[3]), Boolean.parseBoolean(data.split(";")[4]), data.split(";")[5]);
+			}
+		}
 	}
 	
 	public void initTestDatabase() {

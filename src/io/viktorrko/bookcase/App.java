@@ -9,6 +9,10 @@ public class App {
 		
 		books.printAllBooks();
 		
+		books.exportBookInfo();
+		
+		books.importBookInfo();
+		
 		//books.exportBookInfo();
 		//books.removeBook();
 		

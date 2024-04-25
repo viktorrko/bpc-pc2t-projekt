@@ -1,13 +1,13 @@
 package io.viktorrko.bookcase;
 
 class Novel extends Book {
-	private enum Genre {
+	/*private enum Genre {
 		THRILLER,
 		ROMANCE,
 		SCIFI,
 		FANTASY,
 		ADVENTURE
-	}
+	}*/
 	private Genre genre;
 	
 	public Novel(String title, String[] author, short year, boolean available, String genre) {
@@ -15,6 +15,10 @@ class Novel extends Book {
 		this.genre = Genre.valueOf(genre.toUpperCase());
 	}
 
+	public Enum<?> getParameter() {
+		return genre;
+	}
+	
 	public Genre getGenre() {
 		return genre;
 	}
@@ -36,6 +40,7 @@ class Novel extends Book {
 		return data;
 	}
 	
+	//@Override
 	public static boolean isValidParameter(String parameter) {
 		for(Genre e : Genre.values())
 			if(e.toString().toLowerCase().equals(parameter.toLowerCase()))

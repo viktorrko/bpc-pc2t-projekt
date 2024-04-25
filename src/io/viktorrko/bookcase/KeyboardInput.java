@@ -67,6 +67,9 @@ class KeyboardInput {
 			else
 				System.out.println("Invalid input.");
 		}
-		
 	}
+	
+	public static boolean isBoolean(String s) {
+        return s.equalsIgnoreCase("true") || s.equalsIgnoreCase("false");
+    }
 }

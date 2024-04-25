@@ -1,7 +1,19 @@
 package io.viktorrko.bookcase;
 
-import java.util.HashSet;
-import java.util.Set;
+enum Genre {
+	THRILLER,
+	ROMANCE,
+	SCIFI,
+	FANTASY,
+	ADVENTURE
+}
+
+enum TargetGrade {
+	FIRST,
+	SECOND,
+	THIRD,
+	FOURTH
+}
 
 abstract class Book {
 	private String title;
@@ -12,7 +24,6 @@ abstract class Book {
 		NOVEL,
 		TEXTBOOK;
 	}
-	private static BookTypes bookTypes;
 	
 	public Book(String title, String[] authors, short year, boolean available) {
 		// TODO Auto-generated constructor stub
@@ -61,8 +72,42 @@ abstract class Book {
 		this.available = available;
 	}
 	
+	public abstract Enum<?> getParameter();
+	
 	public String getDataCSV() {
 		return "";
+	}
+	
+	public static boolean isValidCSV(String data) {
+		String[] splitData = data.split(";");
+		
+		if(splitData.length != 6) {
+			return false;
+		}
+		
+		if(!isValidBookType(splitData[0])) {
+			return false;
+		}
+		
+		
+		switch(splitData[0].toLowerCase()) {
+		case "novel":
+			if(!Novel.isValidParameter(splitData[3])) {
+				return false;
+			}
+			break;
+		case "textbook":
+			if(!Textbook.isValidParameter(splitData[3])) {
+				return false;
+			}
+			break;
+		}
+		
+		if(!KeyboardInput.isBoolean(splitData[5])) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public boolean isValidAuthor(String author) {
@@ -78,6 +123,11 @@ abstract class Book {
 			if(e.toString().toLowerCase().equals(type.toLowerCase()))
 				return true;
 		
+		return false;
+	}
+	
+	public static boolean isValidParameter(String parameter) {
+		//TODO is there a better way to do this?
 		return false;
 	}
 	
