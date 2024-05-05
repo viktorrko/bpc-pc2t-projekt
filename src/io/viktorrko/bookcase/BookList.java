@@ -85,14 +85,12 @@ class BookList {
 				
 				String[] authors = KeyboardInput.scanString("Authors (separated by ',')").split(",");
 				
-				//System.out.print("Year: ");
 				short year = KeyboardInput.scanShort("Year");
 				
-				//System.out.print("Available: ");
 				boolean available = KeyboardInput.scanBoolean("Available (true/false)");
 				
 				String parameter = null;
-				switch (type) {
+				switch (type.toLowerCase()) {
 					case "novel":
 						System.out.println("(Thriller | Romance | Scifi | Fantasy | Adventure)");
 						parameter = KeyboardInput.scanGenre();
@@ -105,6 +103,7 @@ class BookList {
 				}
 				
 				addBook(type, title, authors, year, available, parameter);
+				System.out.println("Book added.");
 			}
 			else
 				System.out.println("Invalid book type.");

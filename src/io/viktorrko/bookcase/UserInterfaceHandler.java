@@ -1,7 +1,7 @@
 package io.viktorrko.bookcase;
 
 public class UserInterfaceHandler {
-	static int version = 2;
+	static int version = 3;
 	private static BookList books = new BookList();
 	
 	private static String[] menuOptions = new String[] {
@@ -42,7 +42,6 @@ public class UserInterfaceHandler {
 	        
 	        switch (input.toLowerCase()) {
 	            case "1":
-	            	// clearConsoleWindows();
 	            	System.out.println();
 	                books.addBook();
 	                System.out.println();
