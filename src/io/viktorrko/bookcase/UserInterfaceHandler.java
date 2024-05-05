@@ -1,6 +1,7 @@
 package io.viktorrko.bookcase;
 
 public class UserInterfaceHandler {
+	static int version = 1;
 	private static BookList books = new BookList();
 	
 	private static String[] menuOptions = new String[] {
@@ -27,17 +28,17 @@ public class UserInterfaceHandler {
 	public static void startUI() {
 		System.out.println("---   BOOK DATABASE   ---");
 		System.out.println("  Viktor Voscek 247199");
+		System.out.println("  Version " + version);
 		System.out.println();
 		System.out.println("[MAIN MENU]");
 		
 		String input = "";
 		KeyboardInput.openScanner();
 		
-		while (!input.equalsIgnoreCase("q")) {  // Infinite loop
+		while (!input.equalsIgnoreCase("q")) {
 			System.out.print(String.join("\n", menuOptions) + "\n");
 			
 			input = KeyboardInput.scanString("option");
-			//input = sc.nextLine();
 	        
 	        switch (input.toLowerCase()) {
 	            case "1":
