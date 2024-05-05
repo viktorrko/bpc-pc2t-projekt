@@ -24,8 +24,17 @@ class FileHandler {
 			}
 		}
 		
-		// System.out.println("File created at:\n" + path);
 		return path.toFile();
+	}
+	
+	public static void createDirectory(String newPath) {
+		Path path = Paths.get(newPath);
+		
+		try {
+            Files.createDirectory(path);
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the directory: " + e.getMessage());
+        }
 	}
 	
 	public static boolean writeToFile(String s, File file) {

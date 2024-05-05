@@ -26,7 +26,6 @@ abstract class Book {
 	}
 	
 	public Book(String title, String[] authors, short year, boolean available) {
-		// TODO Auto-generated constructor stub
 		this.title = title;
 		this.authors = authors;
 		this.year = year;
@@ -74,8 +73,11 @@ abstract class Book {
 	
 	public abstract Enum<?> getParameter();
 	
+	public abstract void setParameter(String s);
+	
+	//TODO reorder value order for everything
 	public String getDataCSV() {
-		return "";
+		return null;
 	}
 	
 	public static boolean isValidCSV(String data) {
@@ -127,11 +129,11 @@ abstract class Book {
 	}
 	
 	public static boolean isValidParameter(String parameter) {
-		//TODO is there a better way to do this?
 		return false;
 	}
 	
-	
-	
-	// public abstract boolean isValidParameter(String parameter);
+	/*@Override
+    public int compareTo(Book other) {
+        return String.compare(this.title, other.title);
+    }*/
 }

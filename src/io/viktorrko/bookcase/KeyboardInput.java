@@ -3,29 +3,48 @@ package io.viktorrko.bookcase;
 import java.util.Scanner;
 
 class KeyboardInput {
+	private static Scanner sc;
+	private static boolean scannerOpen = false;
+	
+	public static void openScanner() {
+		if (!scannerOpen) {
+			sc = new Scanner(System.in);
+			scannerOpen = true;
+		}
+	}
+	
+	public static void closeScanner() {
+		if (scannerOpen) {
+			sc.close();
+			scannerOpen = false;
+		}
+	}
+	
 	public static String scanString(String parameter) {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.print(String.format("%s: ", parameter));
-		
-		return sc.nextLine();
+		while(true) {
+			System.out.print(String.format("%s: ", parameter));
+			String out = sc.nextLine();
+			//sc.close();
+			if(!out.equals(""))
+				return out;
+			System.out.println("Field can't be empty");
+		}
 	}
 	
 	public static short scanShort(String parameter) {
-		Scanner sc = new Scanner(System.in);
-		
 		System.out.print(String.format("%s: ", parameter));
 		while (!sc.hasNextShort()) {
             // If the next token is not an integer, prompt the user to enter again
-            System.out.print(String.format("Invalid input.\n%s : ", parameter));
+            System.out.print(String.format("Invalid input.\n%s: ", parameter));
             sc.next();
         }
-		return sc.nextShort();
+		short out = sc.nextShort();
+		sc.nextLine();
+		return out;
 	}
 	
 	public static boolean scanBoolean(String parameter) {
-
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 		
 		System.out.print(String.format("%s: ", parameter));
 		while (!sc.hasNextBoolean()) {
@@ -33,7 +52,11 @@ class KeyboardInput {
             System.out.print(String.format("Invalid input.\n%s : ", parameter));
             sc.next();
         }
-		return sc.nextBoolean();
+		
+		boolean out = sc.nextBoolean();
+		sc.nextLine();
+		//sc.close();
+		return out;
 	}
 
 	public static String[] trimStringArray(String[] s) {
@@ -42,9 +65,8 @@ class KeyboardInput {
 		}
 		return s;
 	}
-
+	
 	public static String scanGenre() {
-		Scanner sc = new Scanner(System.in);
 		String parameter;
 		
 		while(true) {
@@ -57,7 +79,6 @@ class KeyboardInput {
 	}
 	
 	public static String scanTargetGrade() {
-		Scanner sc = new Scanner(System.in);
 		String parameter;
 		
 		while(true) {

@@ -25,18 +25,13 @@ class Textbook extends Book {
 	public String getTargetGradeString() {
 		return targetGrade.toString().substring(0, 1).toUpperCase() + targetGrade.toString().substring(1).toLowerCase() + " grade";
 	}
+	
+	public void setParameter(String s) {
+		this.targetGrade = TargetGrade.valueOf(s.toUpperCase());
+	}
 
 	public void setTargetGrade(TargetGrade targetGrade) {
 		this.targetGrade = targetGrade;
-	}
-	
-	@Override
-	public String getDataCSV() {
-		String data;
-		
-		data = String.join(";", "textbook", getTitle(), String.join(",", getAuthors()), getTargetGradeString(), Short.toString(getYear()), Boolean.toString(isAvailable()));
-		
-		return data;
 	}
 	
 	public boolean isValidTargetGrade(String genre) {
@@ -54,7 +49,16 @@ class Textbook extends Book {
 	}
 	
 	@Override
+	public String getDataCSV() {
+		String data;
+		
+		data = String.join(";", "textbook", getTitle(), String.join(",", getAuthors()), getTargetGradeString(), Short.toString(getYear()), Boolean.toString(isAvailable()));
+		
+		return data;
+	}
+	
+	@Override
 	public String toString() {
-		return String.format("%s | %s | %s | %d | %s", getTitle(), String.join(", ", getAuthors()), getTargetGradeString(), getYear(), isAvailableString());
+		return String.format("Textbook | %s | %s | %s | %d | %s", getTitle(), String.join(", ", getAuthors()), getTargetGradeString(), getYear(), isAvailableString());
 	}
 }
