@@ -130,9 +130,4 @@ abstract class Book {
 	public static boolean isValidParameter(String parameter) {
 		return false;
 	}
-	
-	/*@Override
-    public int compareTo(Book other) {
-        return String.compare(this.title, other.title);
-    }*/
 }

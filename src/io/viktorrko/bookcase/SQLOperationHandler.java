@@ -46,8 +46,5 @@ public class SQLOperationHandler {
 		
 		sql = "CREATE TABLE IF NOT EXISTS books (\"type\" TEXT NOT NULL, title TEXT PRIMARY KEY NOT NULL, authors TEXT, \"year\" SMALLINT, available BOOLEAN, \"parameter\" TEXT);";
 		executeStatement(sql);
-		
-		/*sql = "DELETE FROM books";
-		executeStatement(sql);*/
 	}
 }

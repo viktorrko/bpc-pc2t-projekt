@@ -34,7 +34,6 @@ class KeyboardInput {
 	public static short scanShort(String parameter) {
 		System.out.print(String.format("%s: ", parameter));
 		while (!sc.hasNextShort()) {
-            // If the next token is not an integer, prompt the user to enter again
             System.out.print(String.format("Invalid input.\n%s: ", parameter));
             sc.next();
         }
@@ -44,18 +43,14 @@ class KeyboardInput {
 	}
 	
 	public static boolean scanBoolean(String parameter) {
-		//Scanner sc = new Scanner(System.in);
-		
 		System.out.print(String.format("%s: ", parameter));
 		while (!sc.hasNextBoolean()) {
-            // If the next token is not an integer, prompt the user to enter again
             System.out.print(String.format("Invalid input.\n%s : ", parameter));
             sc.next();
         }
 		
 		boolean out = sc.nextBoolean();
 		sc.nextLine();
-		//sc.close();
 		return out;
 	}
 
