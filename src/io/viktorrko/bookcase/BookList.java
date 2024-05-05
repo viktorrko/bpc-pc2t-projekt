@@ -224,7 +224,6 @@ class BookList {
 	}
 	
 	public void printBooksByGenre() {
-		// TODO print available genres
 		if (!isBooksEmpty()) {
 			
 			System.out.println("(Thriller | Romance | Scifi | Fantasy | Adventure)");
@@ -300,9 +299,7 @@ class BookList {
 			System.out.println("File not found.");
 	}
 	
-	public void loadFromDatabase() {
-		// TODO test
-		
+	public void loadFromDatabase() {		
 		if (SQLOperationHandler.isTableEmpty())
 			System.out.println("Database is empty.");
 		else {

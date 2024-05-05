@@ -61,9 +61,7 @@ class FileHandler {
 	
 	public static boolean validPath(String s) {
 		Path path = Paths.get(s);
-		
-		System.out.println(path.toFile().exists());
-		
+				
 		if (path.toFile().exists())
 			return true;
 		

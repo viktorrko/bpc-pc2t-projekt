@@ -1,7 +1,7 @@
 package io.viktorrko.bookcase;
 
 public class UserInterfaceHandler {
-	static int version = 1;
+	static int version = 2;
 	private static BookList books = new BookList();
 	
 	private static String[] menuOptions = new String[] {

@@ -75,7 +75,6 @@ abstract class Book {
 	
 	public abstract void setParameter(String s);
 	
-	//TODO reorder value order for everything
 	public String getDataCSV() {
 		return null;
 	}
